@@ -47,7 +47,7 @@
 
     }
 
-        function searchLevelLT(){
+    function searchLevelLT(){
         let TestDataClass = ncmb.DataStore(db);
         let level = parseInt($("#level").val());
         TestDataClass
@@ -59,7 +59,7 @@
 
     }
 
-        function searchLevelGT(){
+    function searchLevelGT(){
         let TestDataClass = ncmb.DataStore(db);
         let level = parseInt($("#level").val());
         TestDataClass
@@ -71,6 +71,41 @@
 
     }
 
+    function searchAttack(){
+        let TestDataClass = ncmb.DataStore(db);
+        let attack = parseInt($("#attack").val());
+        TestDataClass
+            .equalTo("attack",attack)
+            .fetchAll()
+            .then(function(results){
+                showResults(results);
+            })
+
+    }
+
+    function searchAttackLT(){
+        let TestDataClass = ncmb.DataStore(db);
+        let attack = parseInt($("#attack").val());
+        TestDataClass
+            .lessThan("attack",attack)
+            .fetchAll()
+            .then(function(results){
+                showResults(results);
+            })
+
+    }
+
+    function searchAttackGT(){
+        let TestDataClass = ncmb.DataStore(db);
+        let attack = parseInt($("#attack").val());
+        TestDataClass
+            .greaterThan("attack",attack)
+            .fetchAll()
+            .then(function(results){
+                showResults(results);
+            })
+
+    }
     function showResults(results) {
       // テーブルのヘッダを生成
       let msg = "<table><tr><th>name</th><th>Lvl</th><th>attack</th><th>defence</th></tr>";
@@ -100,12 +135,19 @@
     <label for="level">level:</label>
     <input id="level" type="number" placeholder="monster level">
   </div>
+  <div>
+    <label for="attack">attack:</label>
+    <input id="attack" type="number2" placeholder="monster attack">
+  </div>
   <div id="button">
     <button class="btn" onclick="fetchAll()">Fetch All</button>
     <button class="btn" onclick="searchName()">Name</button><br>
     <button class="btn" onclick="searchLevelLT()">Level &lt;</button>
     <button class="btn" onclick="searchLevel()">Level</button>
-    <button class="btn" onclick="searchLevelGT()">Level &gt;</button>
+    <button class="btn" onclick="searchLevelGT()">Level &gt;</button><br>
+    <button class="btn" onclick="searchAttackLT()">attack &lt;</button>
+    <button class="btn" onclick="searchAttack()">attack</button>
+    <button class="btn" onclick="searchAttackGT()">attack &gt;</button>
   </div>
   <div id="message">message area</div>
 </body>
