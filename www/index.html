@@ -51,7 +51,7 @@
         let TestDataClass = ncmb.DataStore(db);
         let level = parseInt($("#level").val());
         TestDataClass
-            .lessThan("level",level)
+            .lessThanOrEqualTo("level",level)
             .fetchAll()
             .then(function(results){
                 showResults(results);
@@ -63,7 +63,7 @@
         let TestDataClass = ncmb.DataStore(db);
         let level = parseInt($("#level").val());
         TestDataClass
-            .greaterThan("level",level)
+            .greaterThanOrEqualTo("level",level)
             .fetchAll()
             .then(function(results){
                 showResults(results);
@@ -87,7 +87,7 @@
         let TestDataClass = ncmb.DataStore(db);
         let attack = parseInt($("#attack").val());
         TestDataClass
-            .lessThan("attack",attack)
+            .lessThanOrEqualTo("attack",attack)
             .fetchAll()
             .then(function(results){
                 showResults(results);
@@ -99,13 +99,14 @@
         let TestDataClass = ncmb.DataStore(db);
         let attack = parseInt($("#attack").val());
         TestDataClass
-            .greaterThan("attack",attack)
+            .greaterThanOrEqualTo("attack",attack)
             .fetchAll()
             .then(function(results){
                 showResults(results);
             })
 
     }
+
     function showResults(results) {
       // テーブルのヘッダを生成
       let msg = "<table><tr><th>name</th><th>Lvl</th><th>attack</th><th>defence</th></tr>";
@@ -137,17 +138,18 @@
   </div>
   <div>
     <label for="attack">attack:</label>
-    <input id="attack" type="number2" placeholder="monster attack">
+    <input id="attack" type="number" placeholder="monster attack">
   </div>
   <div id="button">
     <button class="btn" onclick="fetchAll()">Fetch All</button>
     <button class="btn" onclick="searchName()">Name</button><br>
-    <button class="btn" onclick="searchLevelLT()">Level &lt;</button>
+    <button class="btn" onclick="searchLevelLT()">Less &lt;</button>
     <button class="btn" onclick="searchLevel()">Level</button>
-    <button class="btn" onclick="searchLevelGT()">&lt; Level </button><br>
-    <button class="btn" onclick="searchAttackLT()">attack &lt;</button>
+    <button class="btn" onclick="searchLevelGT()">&lt; Over </button><br>
+    <button class="btn" onclick="searchAttackLT()">Less &lt;</button>
     <button class="btn" onclick="searchAttack()">attack</button>
-    <button class="btn" onclick="searchAttackGT()">&lt; attack </button>
+    <button class="btn" onclick="searchAttackGT()">&lt; Over </button>
+
   </div>
   <div id="message">message area</div>
 </body>
