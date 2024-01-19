@@ -35,6 +35,18 @@
 
     }
 
+        function searchHeight(){
+        let TestDataClass = ncmb.DataStore(db);
+        let height = $("#height").val();
+        TestDataClass
+            .equalTo("height",height)
+            .fetchAll()
+            .then(function(results){
+                showResults(results);
+            })
+
+    }
+
     function searchLevel(){
         let TestDataClass = ncmb.DataStore(db);
         let level = parseInt($("#level").val());
@@ -58,6 +70,8 @@
             })
 
     }
+
+    
 
     function searchLevelGT(){
         let TestDataClass = ncmb.DataStore(db);
@@ -129,7 +143,7 @@
 </head>
 
 <body>
-  <h1>mBaaS search</h1>
+  <h1>友人ステータス</h1>
   <div>
     <label for="name">name:</label>
     <input id="name" type="text" placeholder="monster name">
@@ -149,6 +163,7 @@
   <div id="button">
     <button class="btn" onclick="fetchAll()">Fetch All</button>
     <button class="btn" onclick="searchName()">Name</button><br>
+    <button class="btn" onclick="searchHeight()">Height</button><br>
     <button class="btn" onclick="searchLevelLT()">Less &lt;</button>
     <button class="btn" onclick="searchLevel()">Level</button>
     <button class="btn" onclick="searchLevelGT()">&lt; Over </button><br>
